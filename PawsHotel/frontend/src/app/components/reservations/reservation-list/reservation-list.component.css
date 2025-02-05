@@ -1,0 +1,20 @@
+.paid-td {
+    color: rgb(4, 182, 4);
+    font-weight: bold;
+}
+
+.canceled-td {
+    color: red;
+    font-weight: bold;
+}
+
+.pending-td {
+    color: orange;
+    font-weight: bold;
+}
+
+.confirmed-td {
+    color: blue;
+    font-weight: bold;
+}
+

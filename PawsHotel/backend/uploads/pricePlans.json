@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Comfort",
+    "price": 12
+  },
+  {
+    "name": "Pro",
+    "price": 17
+  },
+  {
+    "name": "VIP",
+    "price": 29
+  }
+]

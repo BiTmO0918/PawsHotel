@@ -1,0 +1,63 @@
+
+.navbar-scroll .nav-link,
+.navbar-scroll .navbar-toggler-icon,
+.navbar-scroll .navbar-brand {
+  color: #262626;
+}
+
+.navbar-scroll {
+  background-color: #FFC017;
+}
+
+
+.navbar-scrolled .nav-link,
+.navbar-scrolled .navbar-toggler-icon,
+.navbar-scroll .navbar-brand {
+  color: #262626;
+}
+
+
+.navbar-scrolled {
+  background-color: #fff;
+}
+
+a {
+  text-decoration: none;
+}
+
+.navbar.navbar-scroll.navbar-scrolled {
+  padding-top: auto;
+  padding-bottom: auto;
+}
+.navbar-brand {
+  font-size: unset;
+  height: 3.5rem;
+}
+
+.navbar-brand img {
+    height: 40px; 
+    width: auto;
+  }
+
+.navbar-brand h3 {
+    font-family:fantasy;
+}
+
+.navbar {
+  font-family: 'Roboto', sans-serif ;
+}
+
+@media (max-width: 991px) {
+  .navbar-nav .nav-item {
+    width: 100%;
+  }
+
+  .navbar-nav .nav-item a {
+    display: flex;
+    justify-content: center;
+  }
+
+  .navbar-nav .btn {
+    width: 100%;
+  }
+}

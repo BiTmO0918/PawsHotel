@@ -1,0 +1,85 @@
+<div class="container my-4" *ngIf="user">
+  <div class="row justify-content-center">
+    <div class="col-md-12 text-center mb-1">
+      <h2 class="my-4">Account Details</h2>
+    </div>
+    <div class="col-md-10">
+      <div class="form-container border border-dark rounded">
+        <form>
+          <!-- Form Row-->
+          <div class="row gx-4 mb-4">
+            <!-- Form Group (first name)-->
+            <div class="col-md-6">
+              <label class="mb-3 fw-bold" for="inputFirstName">First name</label>
+              <input
+                class="form-control form-control-lg"
+                id="inputFirstName"
+                type="text"
+                placeholder="Enter your first name"
+                [(ngModel)]="user.firstName"
+                name="firstName"
+              />
+            </div>
+            <!-- Form Group (last name)-->
+            <div class="col-md-6">
+              <label class="mb-3 fw-bold" for="inputLastName">Last name</label>
+              <input
+                class="form-control form-control-lg"
+                id="inputLastName"
+                type="text"
+                placeholder="Enter your last name"
+                [(ngModel)]="user.lastName"
+                name="lastName"
+              />
+            </div>
+          </div>
+          <!-- Form Group (address)-->
+          <div class="mb-4">
+            <label class="mb-3 fw-bold" for="inputLocation">Address</label>
+            <input
+              class="form-control form-control-lg"
+              id="inputLocation"
+              type="text"
+              placeholder="Enter your address"
+              [(ngModel)]="user.address"
+              name="address"
+            />
+          </div>
+          <!-- Form Row-->
+          <div class="row gx-4 mb-4">
+            <!-- Form Group (email address)-->
+            <div class="col-md-6">
+              <label class="mb-3 fw-bold" for="inputEmailAddress">Email</label>
+              <input
+                class="form-control form-control-lg"
+                id="inputEmailAddress"
+                type="email"
+                placeholder="Enter your email address"
+                [(ngModel)]="user.email"
+                name="email"
+              />
+            </div>
+            <!-- Form Group (phone number)-->
+            <div class="col-md-6">
+              <label class="mb-3 fw-bold" for="inputPhone">Phone number</label>
+              <input
+                class="form-control form-control-lg"
+                id="inputPhone"
+                type="tel"
+                placeholder="Enter your phone number"
+                [(ngModel)]="user.phone"
+                name="phone"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- Save changes button-->
+    <div class="text-center mt-5">
+      <button (click)="saveChanges()" class="btn btn-warning btn-lg w-50" type="button">
+        <i class="fas fa-save"></i> Save changes
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,86 @@
+<nav
+  class="navbar navbar-expand-lg navbar-scroll shadow-0 border-bottom border-dark"
+>
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <h3 class="p-1"><img src="assets/Designer.png" /> {{ hotelName }}</h3>
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto">
+        @if(isAdmin) {
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Users</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/list-users">List Users</a></li>
+              <li><a class="dropdown-item" href="/list-requests">Help Requests</a></li>
+            </ul>
+          </li>
+        }
+        @if(isLoggedIn) {
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Reservations</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/create-reservation">Create Reservation</a></li>
+            <li><a class="dropdown-item" href="list-reservations">View Reservations</a></li>
+            @if (isAdmin) {<li><a class="dropdown-item" href="/plans">Price Plans</a></li>}
+          </ul>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/profile">Account</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about-us">About us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact-us">Contacts</a>
+        </li>
+        <li class="nav-item">
+          <a href="/logout" class="d-flex justify-content-center">
+            <button class="btn btn-dark ms-3" (click)="logout()">Logout</button>
+          </a>
+        </li>
+        } @else if (isLoggedIn) {
+          <li class="nav-item">
+            <a class="nav-link" href="/about-us">About us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contact-us">Contacts</a>
+          </li>
+          <li class="nav-item">
+            <a href="/logout" class="d-flex justify-content-center">
+              <button class="btn btn-dark ms-3" (click)="logout()">Logout</button>
+            </a>
+          </li>
+        } @else {
+        <li class="nav-item">
+          <a class="nav-link" href="/about-us">About us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact-us">Contacts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Log In</a>
+        </li>
+        <li class="nav-item">
+          <a href="/register" class="d-flex justify-content-center">
+            <button class="btn btn-dark ms-3">Get Started</button>
+          </a>
+        </li>
+        }
+      </ul>
+    </div>
+    
+  </div>
+</nav>

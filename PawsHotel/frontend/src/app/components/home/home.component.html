@@ -1,0 +1,130 @@
+<div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="../../../assets/carrosel1.jpg" class="d-block w-100" alt="Slide 1" />
+      <div class="container">
+        <div class="carousel-caption text-start">
+          <h1>Daily walks</h1>
+          <p class="opacity-75">
+            We believe that regular physical activity is essential for the health and well-being of our four-legged guests. That's why we offer daily walks, ensuring your dog receives the ideal amount of exercise and mental stimulation.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="../../../assets/carrosel2.jpg" class="d-block w-100" alt="Slide 2" />
+      <div class="container">
+        <div class="carousel-caption">
+          <h1>Veterinary Support</h1>
+          <p>
+            The health and well-being of our guests is our highest priority. To ensure that all dogs are always in excellent health, we offer a comprehensive veterinary support service.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="../../../assets/carrosel3.jpg" class="d-block w-100" alt="Slide 3" />
+      <div class="container">
+        <div class="carousel-caption text-end">
+          <h1>All dog sizes are welcome</h1>
+          <p>
+            We believe that all dogs deserve a special place to stay, regardless of size. Whether small, medium, large or giant, all dogs are welcome here!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<div class="mt-5">
+  <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+    <h1 class="display-4 fw-normal text-body-emphasis">Pricing</h1>
+    <div class="container">
+      <p id="plans" class="mt-3 fs-5 text-body-secondary">
+        Explore our range of pricing plans tailored to meet the needs of your beloved pets. From basic to VIP options, we provide the best care and facilities to ensure your furry friends are happy and healthy.
+      </p>
+    </div>
+  </div>
+
+  <div *ngIf="pricePlans && pricePlans.length > 0; else noPlans" class="d-flex justify-content-center mx-3">
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+      <div class="col mb-4" *ngIf="pricePlans[0]">
+        <div class="card mb-4 rounded-3 shadow-sm h-100">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal">{{pricePlans[0].name}}</h4>
+          </div>
+          <div class="card-body d-flex flex-column align-items-center">
+            <div class="price">
+              <h1 class="card-title pricing-card-title">
+                ${{pricePlans[0].price}}<small class="text-body-secondary fw-light">/day</small>
+              </h1>
+            </div>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>Feeding twice a day</li>
+              <li>Access to common play area</li>
+              <li>Basic health monitoring</li>
+              <li>Daily photos sent via WhatsApp</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col mb-4" *ngIf="pricePlans[1]">
+        <div class="card mb-4 rounded-3 shadow-sm h-100">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal">{{pricePlans[1].name}}</h4>
+          </div>
+          <div class="card-body d-flex flex-column align-items-center">
+            <div class="price">
+              <h1 class="card-title pricing-card-title">
+                ${{pricePlans[1].price}}<small class="text-body-secondary fw-light">/day</small>
+              </h1>
+            </div>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>Feeding 3 times a day</li>
+              <li>Access to common play area with monitoring</li>
+              <li>Health monitoring with weekly check-up</li>
+              <li>Daily photos and videos sent via WhatsApp</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col mb-4" *ngIf="pricePlans[2]">
+        <div class="card mb-4 rounded-3 shadow-sm h-100 border-black">
+          <div class="card-header py-3 text-bg-warning border-primary">
+            <h4 class="my-0 fw-normal">{{pricePlans[2].name}}</h4>
+          </div>
+          <div class="card-body d-flex flex-column align-items-center">
+            <div class="price">
+              <h1 class="card-title pricing-card-title">
+                ${{pricePlans[2].price}}<small class="text-body-secondary fw-light">/day</small>
+              </h1>
+            </div>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>Food 3 times a day with personalized diet</li>
+              <li>Access to common and VIP area with monitoring</li>
+              <li>Health monitoring with daily check-ups</li>
+              <li>Daily photos and videos sent via WhatsApp</li>
+              <li>Daily training sessions</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #noPlans>
+    <p>No price plans available.</p>
+  </ng-template>
+</div>

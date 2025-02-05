@@ -1,0 +1,47 @@
+<div class="container-xl mt-5 mb-5">
+    <div class="col-md-12 text-center mb-1">
+        <h2 class="my-4">Users List</h2>
+      </div>
+    <div class="rounded-border border border-dark rounded">
+        <div class="container-xl ms-1 me-1 mt-3 mb-3">
+            <div class="input-group rounded mb-3">
+                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" [(ngModel)]="searchQuery" (input)="filterUsers()" />
+                <span class="input-group-text border-0" id="search-addon">
+                    <i class="fas fa-search"></i>
+                </span>
+            </div>
+
+            <p-table
+                [value]="filteredUsers"
+                [paginator]="true"
+                [rows]="5"
+                [tableStyle]="{ 'min-width': '50rem' }"
+                [rowsPerPageOptions]="[5, 10, 20]"
+            >
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width:19%">Name</th>
+                        <th style="width:19%">Email</th>
+                        <th style="width:19%">Address</th>
+                        <th style="width:19%">Phone</th>
+                        <th style="width:19%">Status</th>
+                        <th style="width:5%;"></th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-user>
+                    <tr>
+                        <td>{{ user.firstName + ' ' + user.lastName }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.address }}</td>
+                        <td>{{ user.phone }}</td>
+                        <td [ngClass]="{'active-td': user.active, 'inactive-td': !user.active}">{{ user.active ? 'ACTIVE' : 'INACTIVE' }}</td>
+                        <td>
+                            <p-button *ngIf="user.active" class="custom-button" title="Inactive user" (click)="inactiveUser(user._id)" icon="pi pi-user-minus" [rounded]="true" [outlined]="true" severity="contrast"></p-button>
+                            <p-button *ngIf="!user.active" class="custom-button"  title="Active user" (click)="activeUser(user._id)" icon="pi pi-user-plus" [rounded]="true" [outlined]="true" severity="contrast"></p-button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>

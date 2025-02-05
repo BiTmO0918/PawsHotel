@@ -1,0 +1,9 @@
+.active-td {
+    color: rgb(4, 182, 4);
+    font-weight: bold;
+}
+
+.inactive-td {
+    color: red;
+    font-weight: bold;
+}

@@ -1,0 +1,54 @@
+/* Estilos básicos da página */
+body {
+    margin: 0;
+    padding: 0;
+    background: #f5f6fa;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilos do contêiner do formulário */
+.form-container {
+    width: 100%; /* Certifica-se de que o formulário ocupa toda a largura disponível */
+    background: #ffffff;
+    border: 1px solid #000; /* Adiciona uma borda preta */
+    border-radius: 5px;
+    padding: 30px; /* Aumentar o padding para um design mais espaçoso */
+}
+
+/* Estilos dos controles do formulário */
+.form-control {
+    border: 1px solid #cfd1d8;
+    border-radius: 2px;
+    font-size: 1.125rem; /* Aumenta o tamanho da fonte */
+    background: #ffffff;
+    color: #2e323c;
+    margin-bottom: 20px;
+    padding: 15px; /* Aumenta o padding dos inputs */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Estilos do botão de salvar mudanças */
+.btn-warning {
+    background-color: #ffc107;
+    border: none;
+    padding: 15px 30px; /* Aumenta o padding do botão */
+    cursor: pointer;
+    font-size: 1.125rem; /* Aumenta o tamanho da fonte do botão */
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+}
+
+/* Estilos do cabeçalho */
+.fw-bold {
+    font-weight: bold !important;
+}
+
+/* Título da seção */
+h2.fw-bold {
+    font-size: 1.5rem; /* Ajuste conforme necessário para o tamanho da fonte */
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

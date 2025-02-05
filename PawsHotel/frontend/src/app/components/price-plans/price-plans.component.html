@@ -1,0 +1,23 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Price Plans</h2>
+  <form (ngSubmit)="updatePlans()">
+      <div *ngFor="let plan of pricePlans; let i = index" class="card mb-4 border-dark">
+          <div class="card-body py-2">
+              <h5 class="card-title">Plan {{i + 1}}</h5>
+              <div class="form-group mb-1">
+                  <label for="name-{{i}}">Name:</label>
+                  <input id="name-{{i}}" class="form-control" [(ngModel)]="plan.name" name="name-{{i}}">
+              </div>
+              <div class="form-group mb-1">
+                  <label for="price-{{i}}">Price:</label>
+                  <input id="price-{{i}}" type="number" class="form-control" [(ngModel)]="plan.price" name="price-{{i}}">
+              </div>
+          </div>
+      </div>
+      <div class="text-center">
+          <button type="submit" class="btn btn-warning btn-lg mt-3 w-50">
+              <i class="fas fa-save"></i> Update Plans
+          </button>
+      </div>
+  </form>
+</div>

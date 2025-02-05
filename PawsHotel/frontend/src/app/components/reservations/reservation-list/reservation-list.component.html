@@ -1,0 +1,86 @@
+<div class="container-xl mt-5 mb-5">
+  <div class="col-md-12 text-center mb-1">
+    <h2 class="my-4">Reservations List</h2>
+  </div>
+  <div class="rounded-border border border-dark rounded ">
+    <div class="container-xl ms-1 me-1 mt-3 mb-3">
+      @if (isAdmin) {
+      <div class="input-group rounded mb-3">
+        <input
+          type="search"
+          class="form-control rounded"
+          placeholder="Search"
+          aria-label="Search"
+          aria-describedby="search-addon"
+          [(ngModel)]="searchQuery"
+          (input)="filterReservations()"
+        />
+        <span class="input-group-text border-0" id="search-addon">
+          <i class="fas fa-search"></i>
+        </span>
+      </div>
+      }
+
+      <p-table
+        [value]="filteredReservations"
+        [paginator]="true"
+        [rows]="5"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        [rowsPerPageOptions]="[5, 10, 20]"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            @if (isAdmin) {
+            <th style="width: 18%">Owner</th>
+            <th style="width: 18%">Localization</th>
+            <th style="width: 18%">Start Date</th>
+            <th style="width: 18%">End Date</th>
+            <th style="width: 10%">Price</th>
+            <th style="width: 10%">Status</th>
+            <th style="width: 8%"></th>
+            } @else {
+            <th style="width: 20, 5%">Localization</th>
+            <th style="width: 20, 5%">Start Date</th>
+            <th style="width: 20, 5%">End Date</th>
+            <th style="width: 20, 5%">Price</th>
+            <th style="width: 10%">Status</th>
+            <th style="width: 8%"></th>
+            }
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-reservation>
+          <tr>
+            @if (isAdmin) {
+            <td>{{ reservation.owner }}</td>
+            }
+            <td>{{ reservation.localization }}</td>
+            <td>{{ reservation.startDate | date }}</td>
+            <td>{{ reservation.endDate | date }}</td>
+            <td>{{ reservation.price | currency }}</td>
+            <td
+              [ngClass]="{
+                'pending-td': reservation.status === 'Pending',
+                'confirmed-td': reservation.status === 'Confirmed',
+                'paid-td': reservation.status === 'Paid',
+                'canceled-td': reservation.status === 'Canceled'
+              }"
+            >
+              {{ reservation.status }}
+            </td>
+            <td>
+              <p-button
+                class="custom-button"
+                icon="pi pi-list"
+                [rounded]="true"
+                [outlined]="true"
+                severity="contrast"
+                title="Edit"
+                (click)="editReservation(reservation._id)"
+              />
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>

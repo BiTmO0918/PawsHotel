@@ -1,0 +1,49 @@
+<div class="container-xl mt-5 mb-5">
+  <div class="col-md-12 text-center mb-1">
+    <h2 class="my-4">Help Requests</h2>
+  </div>
+  <div class="rounded-border border border-dark rounded">
+    <div class="container-xl ms-1 me-1 mt-3 mb-3">
+      <div class="rounded-border">
+        <p-table
+          [value]="requests"
+          [paginator]="true"
+          [rows]="5"
+          [tableStyle]="{ 'min-width': '50rem' }"
+          [rowsPerPageOptions]="[5, 10, 20]"
+        >
+          <ng-template pTemplate="header">
+            <tr>
+              <th style="width: 17, 75%">Name</th>
+              <th style="width: 17, 75%">Email</th>
+              <th style="width: 17, 75%">Phone</th>
+              <th style="width: 17, 75%">Subject</th>
+              <th style="width: 24%">Message</th>
+              <th style="width: 5%"></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-request>
+            <tr>
+              <td>{{ request.fullName }}</td>
+              <td>{{ request.email }}</td>
+              <td>{{ request.phone }}</td>
+              <td>{{ request.subject }}</td>
+              <td>{{ request.message }}</td>
+              <td>
+                <p-button
+                  class="custom-button"
+                  icon="pi pi-trash"
+                  [rounded]="true"
+                  [outlined]="true"
+                  severity="danger"
+                  title="Delete"
+                  (click)="deleteRequest(request._id)"
+                />
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+/* Estilos básicos para o componente */
+div {
+    margin-bottom: 10px;
+  }
+  
+  label {
+    display: inline-block;
+    width: 100px;
+  }
+  
+  input {
+    margin-bottom: 5px;
+  }
+  

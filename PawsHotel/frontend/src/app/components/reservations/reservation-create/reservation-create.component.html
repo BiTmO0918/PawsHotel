@@ -1,0 +1,177 @@
+<div class="container my-3">
+  <div class="col-md-12 text-center mb-1">
+    <h2 class="my-4">Create Reservation</h2>
+  </div>
+  <div class="rounded-border border border-dark rounded mb-4">
+    <div class="container-xl px-4 mt-3 mb-4">
+      <form #reservationForm="ngForm" (ngSubmit)="onSubmit(reservationForm)">
+        @if (isAdmin) {
+        <div class="mb-3">
+          <label for="clientName" class="form-label">Client Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="clientName"
+            name="owner"
+            [(ngModel)]="owner"
+            required
+          />
+        </div>
+        }
+
+        <div class="mb-3">
+          <label for="localization" class="form-label">Localization*</label>
+          <select
+            id="localization"
+            name="localization"
+            [(ngModel)]="localization"
+            required
+            class="form-control"
+          >
+            <option value=""></option>
+            <option value="Felgueiras, Porto">Felgueiras, Porto</option>
+            <option value="Boticas, Vila Real">Boticas, Vila Real</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="plan" class="form-label">
+            Choose your plan (to see the different plans, click
+            <a href="#plans" target="_blank">here</a>.)*.
+          </label>
+          <select
+            id="plan"
+            name="plan"
+            [(ngModel)]="price"
+            required
+            class="form-control"
+          >
+            <option value=""></option>
+            <option *ngFor="let plan of pricePlans" [value]="plan.price">
+              {{ plan.name }} ({{ plan.price }}$)
+            </option>
+          </select>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="startDate" class="form-label">Check-in date*</label>
+            <input
+              type="date"
+              id="startDate"
+              name="startDate"
+              [(ngModel)]="startDate"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label for="endDate" class="form-label">Check-out date*</label>
+            <input
+              type="date"
+              id="endDate"
+              name="endDate"
+              [(ngModel)]="endDate"
+              class="form-control"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="animalName" class="form-label">Pet Name*</label>
+          <input
+            type="text"
+            class="form-control"
+            id="animalName"
+            name="animalName"
+            [(ngModel)]="animalName"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="animalSpecie" class="form-label">Pet Specie*</label>
+          <select
+            id="animalSpecie"
+            name="animalSpecie"
+            [(ngModel)]="animalSpecie"
+            required
+            class="form-control"
+          >
+            <option value=""></option>
+            <option value="Dog">Dog</option>
+            <option value="Cat">Cat</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="animalBreed" class="form-label">Pet Breed*</label>
+          <input
+            type="text"
+            class="form-control"
+            id="animalBreed"
+            name="animalBreed"
+            [(ngModel)]="animalBreed"
+          />
+        </div>
+
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <label for="photo" class="form-label"
+                >Show us how your pet looks like*</label
+              >
+              <div class="input-group mb-3">
+                <input
+                  type="file"
+                  class="form-control"
+                  id="photo"
+                  name="photo"
+                  (change)="onFileChange($event, 'photo')"
+                  accept=".jpg,.png"
+                  required
+                />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for="vaccinationRecord" class="form-label"
+                >Vaccine record of your pet*</label
+              >
+              <div class="input-group mb-3">
+                <input
+                  type="file"
+                  class="form-control"
+                  id="vaccinationRecord"
+                  name="vaccinationRecord"
+                  (change)="onFileChange($event, 'vaccinationCard')"
+                  accept=".pdf,.jpg,.png"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-floating">
+          <textarea
+            class="form-control"
+            placeholder="Ex: Diet restrictions, health problems, personality traits, etc..."
+            id="obs"
+            name="obs"
+            [(ngModel)]="obs"
+            style="height: 150px"
+          ></textarea>
+          <label for="obs">What we need to know about your pet?</label>
+        </div>
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-warning btn-lg mt-3 w-50">
+            <i class="fas fa-paw"></i> Submit Reservation
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

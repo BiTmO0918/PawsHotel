@@ -1,0 +1,222 @@
+<div class="container my-3">
+  <div class="col-md-12 text-center mb-1">
+    <h2 class="my-4">Edit Reservation</h2>
+  </div>
+  <div class="rounded-border border border-dark rounded mb-4">
+    <div class="container-xl px-4 mt-3 mb-4">
+      <form #reservationForm="ngForm" (ngSubmit)="onSubmit(reservationForm)">
+
+        <div *ngIf="isAdmin" class="mb-3 mt-3">
+          <label for="status" class="form-label">Status</label>
+          <select
+            id="status"
+            name="status"
+            [(ngModel)]="reservation.status"
+            class="form-control"
+            [ngClass]="{
+              'status-pending': reservation.status === 'Pending',
+              'status-confirmed': reservation.status === 'Confirmed',
+              'status-paid': reservation.status === 'Paid',
+              'status-canceled': reservation.status === 'Canceled'
+            }"
+          >
+            <option value="Pending" class="status-pending">Pending</option>
+            <option value="Confirmed" class="status-confirmed">
+              Confirmed
+            </option>
+            <option value="Paid" class="status-paid">Paid</option>
+            <option value="Canceled" class="status-canceled">Canceled</option>
+          </select>
+        </div>
+
+        <div *ngIf="isAdmin" class="mb-3">
+          <label for="clientName" class="form-label">Owner</label>
+          <input
+            type="text"
+            class="form-control"
+            id="clientName"
+            name="owner"
+            [(ngModel)]="reservation.owner"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="locatization" class="form-label">Localization</label>
+          <select
+            id="locatization"
+            name="locatization"
+            [(ngModel)]="reservation.localization"
+            required
+            class="form-control"
+          >
+            <option value=""></option>
+            <option value="Felgueiras, Porto">Felgueiras, Porto</option>
+            <option value="Boticas, Vila Real">Boticas, Vila Real</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="startDate" class="form-label">Start Date</label>
+            <input
+              type="date"
+              id="startDate"
+              name="startDate"
+              [(ngModel)]="reservation.startDate"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label for="endDate" class="form-label">End Date</label>
+            <input
+              type="date"
+              id="endDate"
+              name="endDate"
+              [(ngModel)]="reservation.endDate"
+              class="form-control"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="container my-5">
+          <div class="row">
+            <div class="col-md-6 input-container">
+              <div class="mb-3">
+                <label for="animalName" class="form-label">Pet Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="animalName"
+                  name="animalName"
+                  [(ngModel)]="reservation.animalName"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="animalSpecie" class="form-label">Pet Specie</label>
+                <select
+                  id="animalSpecie"
+                  name="animalSpecie"
+                  [(ngModel)]="reservation.animalSpecie"
+                  required
+                  class="form-control"
+                >
+                  <option value=""></option>
+                  <option value="Dog">Dog</option>
+                  <option value="Cat">Cat</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label for="animalBreed" class="form-label">Pet Breed</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="animalBreed"
+                  name="animalBreed"
+                  [(ngModel)]="reservation.animalBreed"
+                />
+              </div>
+            </div>
+
+            <div class="col-md-6 mt-3">
+              <div class="mb-3 image-container">
+                <img
+                  *ngIf="reservation.photoURL"
+                  [src]="'http://localhost:3000' + reservation.photoURL"
+                  alt="New Pet Photo Inserted!"
+                  class="img-thumbnail"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container mb-3">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="photo" class="form-label">Change Pet Photo</label>
+                <input
+                  type="file"
+                  class="form-control"
+                  id="photo"
+                  name="photo"
+                  (change)="onFileChange($event, 'photo')"
+                  accept=".jpg,.png"
+                />
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="vaccinationCard" class="form-label"
+                  >Change Vaccination Record (
+                  <a
+                    *ngIf="reservation.vaccinationCardURL"
+                    [href]="
+                      'http://localhost:3000' + reservation.vaccinationCardURL
+                    "
+                    target="_blank"
+                  >
+                    Current</a
+                  >
+                  )</label
+                >
+                <input
+                  type="file"
+                  class="form-control"
+                  id="vaccinationCard"
+                  name="vaccinationCard"
+                  (change)="onFileChange($event, 'vaccinationCard')"
+                  accept=".pdf,.jpg,.png"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-floating">
+          <textarea
+            class="form-control"
+            placeholder="Ex: Diet restrictions, health problems, personality traits, etc..."
+            id="obs"
+            name="obs"
+            [(ngModel)]="reservation.obs"
+            style="height: 150px"
+          ></textarea>
+          <label for="obs">What we need to know about your pet?</label>
+        </div>
+
+        <div class="text-center">
+          <div class="row justify-content-center">
+            <div class="col-12 col-md-6 col-lg-4 mt-3">
+              <button type="submit" class="btn btn-warning btn-lg w-100">
+                <i class="fas fa-paw"></i> Edit Reservation
+              </button>
+            </div>
+          </div>
+          <div
+            *ngIf="reservation.status !== 'Canceled' && !isAdmin"
+            class="row justify-content-center"
+          >
+            <div class="col-12 col-md-6 col-lg-4 mt-3">
+              <button
+                type="button"
+                class="btn btn-danger btn-lg w-100"
+                (click)="cancelReservation()"
+              >
+                <i class="fa-solid fa-trash"></i> Cancel Reservation
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
